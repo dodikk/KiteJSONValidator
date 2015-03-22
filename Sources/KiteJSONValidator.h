@@ -23,8 +23,13 @@
  @return Error if json is invalid. Nil if validated
  */
 
--(NSError*)validateJSONData:(NSData*)jsonData withSchemaData:(NSData*)schemaData;
--(NSError*)validateJSONInstance:(id)json withSchema:(NSDictionary*)schema;
+-(BOOL)validateJSONData:(NSData*)jsonData
+         withSchemaData:(NSData*)schemaData
+                  error:(NSError**)error;
+
+-(BOOL)validateJSONInstance:(id)json
+                 withSchema:(NSDictionary*)schema
+                      error:(NSError**)error;
 
 /**
  Used for adding an ENTIRE document to the list of reference schemas - the URL should therefore be fragmentless.
@@ -34,7 +39,9 @@
  
  @return Error if the reference schema is invalid. Nil if was successfully added.
  */
--(NSError*)addRefSchemaData:(NSData*)schemaData atURL:(NSURL*)url;
+-(BOOL)addRefSchemaData:(NSData*)schemaData
+                  atURL:(NSURL*)url
+                  error:(NSError**)error;
 
 /**
  Used for adding an ENTIRE document to the list of reference schemas - the URL should therefore be fragmentless.
@@ -46,7 +53,10 @@
  
  @return Error if the reference schema is invalid. Nil if was successfully added.
  */
--(NSError*)addRefSchemaData:(NSData*)schemaData atURL:(NSURL*)url validateSchema:(BOOL)shouldValidateSchema;
+-(BOOL)addRefSchemaData:(NSData*)schemaData
+                  atURL:(NSURL*)url
+         validateSchema:(BOOL)shouldValidateSchema
+                  error:(NSError**)error;
 
 /**
  Used for adding an ENTIRE document to the list of reference schemas - the URL should therefore be fragmentless.
@@ -56,7 +66,9 @@
  
  @return Error if the reference schema is invalid. Nil if was successfully added.
  */
--(NSError*)addRefSchema:(NSDictionary*)schema atURL:(NSURL*)url;
+-(BOOL)addRefSchema:(NSDictionary*)schema
+              atURL:(NSURL*)url
+              error:(NSError**)error;
 
 /**
  Used for adding an ENTIRE document to the list of reference schemas - the URL should therefore be fragmentless.
@@ -67,7 +79,10 @@
  
  @return Error if the reference schema is invalid. Nil if was successfully added.
  */
--(NSError*)addRefSchema:(NSDictionary *)schema atURL:(NSURL *)url validateSchema:(BOOL)shouldValidateSchema;
+-(BOOL)addRefSchema:(NSDictionary *)schema
+              atURL:(NSURL *)url
+     validateSchema:(BOOL)shouldValidateSchema
+              error:(NSError**)error;
 
 @end
 
